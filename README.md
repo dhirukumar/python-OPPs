@@ -171,11 +171,156 @@ Inheritance is the capability of one class to derive or inherit the properties f
 #### In the above article, we have created two classes i.e. Person (parent class) and Employee (Child Class). The Employee class inherits from the Person class. We can use the methods of the person class through the employee class as seen in the display function in the above code. A child class can also modify the behavior of the parent class as seen through the details() method.
 
 
+     # Python code to demonstrate how parent constructors
+     # are called.
+ 
+    # parent class
+     class Person(object):
+ 
+    # __init__ is known as the constructor
+    def __init__(self, name, idnumber):
+        self.name = name
+        self.idnumber = idnumber
+ 
+    def display(self):
+        print(self.name)
+        print(self.idnumber)
+         
+    def details(self):
+        print("My name is {}".format(self.name))
+        print("IdNumber: {}".format(self.idnumber))
+     
+     # child class
+     class Employee(Person):
+    def __init__(self, name, idnumber, salary, post):
+        self.salary = salary
+        self.post = post
+ 
+        # invoking the __init__ of the parent class
+        Person.__init__(self, name, idnumber)
+         
+    def details(self):
+        print("My name is {}".format(self.name))
+        print("IdNumber: {}".format(self.idnumber))
+        print("Post: {}".format(self.post))
+ 
+ 
+     # creation of an object variable or an instance
+    a = Employee('Rahul', 886012, 200000, "Intern")
+ 
+     # calling a function of the class Person using
+    # its instance
+    a.display()
+    a.details()
+
+## output
+
+    Rahul
+    886012
+    My name is Rahul
+    IdNumber: 886012
+    Post: Intern
+### Note: For more information, refer to our Inheritance in Python tutorial.
+
+## Python Polymorphism
+### Polymorphism simply means having many forms. For example, we need to determine if the given species of birds fly or not, using polymorphism we can do this using a single function.
+
+## Polymorphism in Python
+### This code demonstrates the concept of inheritance and method overriding in Python classes. It shows how subclasses can override methods defined in their parent class to provide specific behavior while still inheriting other methods from the parent class.
 
 
 
+    class Bird:
+   
+    def intro(self):
+        print("There are many types of birds.")
+ 
+    def flight(self):
+        print("Most of the birds can fly but some cannot.")
+ 
+     class sparrow(Bird):
+   
+    def flight(self):
+        print("Sparrows can fly.")
+ 
+    class ostrich(Bird):
+ 
+    def flight(self):
+        print("Ostriches cannot fly.")
+ 
+     obj_bird = Bird()
+     obj_spr = sparrow()
+    obj_ost = ostrich()
+ 
+    obj_bird.intro()
+    obj_bird.flight()
+ 
+    obj_spr.intro()
+    obj_spr.flight()
+ 
+    obj_ost.intro()
+    obj_ost.flight()
 
+## output
 
+    There are many types of birds.
+    Most of the birds can fly but some cannot.
+     There are many types of birds.
+    Sparrows can fly.
+    There are many types of birds.
+    Ostriches cannot fly. 
+   Note: For more information, refer to our Polymorphism in Python Tutorial.
+
+## Python Encapsulation
+### Encapsulation is one of the fundamental concepts in object-oriented programming (OOP). It describes the idea of wrapping data and the methods that work on data within one unit. This puts restrictions on accessing variables and methods directly and can prevent the accidental modification of data. ### To prevent accidental change, an object’s variable can only be changed by an object’s method. Those types of variables are known as private variables.
+
+### A class is an example of encapsulation as it encapsulates all the data that is member functions, variables, etc.
+
+![encapsulation-in-python](https://github.com/dhirukumar/python-OPPs/assets/146316525/e9fa6b99-0c56-42aa-b636-1862e7c6476e)
+
+## Encapsulation in Python
+### In the above example, we have created the c variable as the private attribute. We cannot even access this attribute directly and can’t even change its value.
+
+       # Python program to
+       # demonstrate private members
+ 
+       # Creating a Base class
+     class Base:
+    def __init__(self):
+        self.a = "GeeksforGeeks"
+        self.__c = "GeeksforGeeks"
+ 
+     # Creating a derived class
+    class Derived(Base):
+    def __init__(self):
+ 
+        # Calling constructor of
+        # Base class
+        Base.__init__(self)
+        print("Calling private member of base class: ")
+        print(self.__c)
+ 
+ 
+    # Driver code
+    obj1 = Base()
+    print(obj1.a)
+ 
+    # Uncommenting print(obj1.c) will
+     # raise an AttributeError
+ 
+    # Uncommenting obj2 = Derived() will
+    # also raise an AtrributeError as
+    # private member of base class
+    # is called inside derived class
+
+ ## output
+     GeeksforGeeks
+Note: for more information, refer to our Encapsulation in Python Tutorial.
+
+## Data Abstraction 
+### It hides unnecessary code details from the user. Also,  when we do not want to give out sensitive parts of our code implementation and this is where data abstraction came.
+
+### Data Abstraction in Python can be achieved by creating abstract classes.
 
 
 
